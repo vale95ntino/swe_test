@@ -1,34 +1,19 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "my_fastapi_app"
+[tool.poetry]
+name = "swe-test"
 version = "0.1.0"
-description = "A FastAPI application with a React frontend"
+description = ""
 authors = ["Your Name <you@example.com>"]
-dependencies = [
-    "fastapi",
-    "uvicorn[standard]",
-    "pydantic",
-]
+readme = "README.md"
+packages = [{include = "swe_test"}]
 
-[tool.black]
-line-length = 88
-target-version = ['py38']
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.112.2"
 
-[tool.isort]
-profile = "black"
+[tool.poetry.group.dev.dependencies]
+black = "^24.8.0"
+pytest = "^8.3.2"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-
-[tool.pylint]
-load-plugins = ["pylint_fastapi"]
-
-[tool.mypy]
-python_version = "3.8"
-warn_return_any = true
-warn_unused_configs = true
-warn_unreachable = true
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
